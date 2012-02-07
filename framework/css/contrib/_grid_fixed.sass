@@ -15,7 +15,7 @@ $grid-full-width: $grid-columns * $grid-column-width + $grid-columns * $grid-gut
 =container($type: none, $box_padding_multiplier: 1)
   @extend .clearfix // Your typical clearfix mixin
   @extend .centered // Just applies margin: 0 auto
-  +box-sizing(content-box) // Allow padding to make margins without affecting inner width
+  @extend .content-box // Allow padding to make margins without affecting inner width
   width: #{($grid-column-width + $grid-gutter-width) * $grid-columns - $grid-gutter-width}px
   @if $type == "box"
     padding-left: #{$grid-gutter-width * $box_padding_multiplier}px

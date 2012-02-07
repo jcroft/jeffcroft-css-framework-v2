@@ -1,8 +1,14 @@
 ////////// MISC EXTENDS ////////
 
 // Display
+.display-none
+  display: none
+
 .display-block
   display: block
+
+.display-inline 
+  display: inline
 
 .display-inline-block
   +inline-block
@@ -14,12 +20,21 @@
 .position-absolute
   position: absolute
 
+.position-fixed
+  position: fixed
+
+.position-static
+  position: static
+
 // Float
 .float-left
   float: left
 
 .float-right
-  flaot: right
+  float: right
+
+.float-none
+  float: none
 
 // Margins and padding
 .no-margin
@@ -43,6 +58,9 @@
 // Box sizing
 .border-box
   +box-sizing(border-box)
+
+.content-box
+  +box-sizing(content-box)
 
 // Clearing
 .clear

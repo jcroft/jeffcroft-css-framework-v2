@@ -1,7 +1,6 @@
 // Settings
 $grid-max-width: 1180px !default
 $grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
-$grid-single-column-breakpoint: 600px
 
 .column
   @extend .float-left
@@ -27,7 +26,7 @@ $grid-single-column-breakpoint: 600px
 =container()
   @extend .clearfix // Your typical clearfix mixin
   @extend .centered // Just applies margin: 0 auto
-  +box-sizing(content-box) // Allow padding to make margins without affecting inner width
+  @extend .content-box // Allow padding to make margins without affecting inner width
   max-width: $grid-max-width
   padding: 0 $grid-gutter-width
 

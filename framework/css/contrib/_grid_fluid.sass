@@ -17,8 +17,8 @@ $grid-gutter-width-pixels: $grid-gutter-width * 1px
 =container($span:$grid-columns)
   @extend .clearfix // Your typical clearfix mixin
   @extend .centered // Just applies margin: 0 auto
+  @extend .content-box
   max-width: ($grid-column-width * $span) * 1px
-  +box-sizing(content-box)
   padding: 0 1em
 
 =span($span, $context:$grid-columns)
