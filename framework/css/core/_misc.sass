@@ -1,0 +1,68 @@
+////////// MISC EXTENDS ////////
+
+// Display
+.display-block
+  display: block
+
+.display-inline-block
+  +inline-block
+
+// Position
+.position-relative
+  position: relative
+
+.position-absolute
+  position: absolute
+
+// Float
+.float-left
+  float: left
+
+.float-right
+  flaot: right
+
+// Margins and padding
+.no-margin
+  margin: 0
+
+.no-padding
+  padding: 0
+
+.no-margin-or-padding
+  @extend .no-margin
+  @extend .no-padding
+
+// Width
+.full-width
+  width: 100%
+
+// Lists
+.no-bullets
+  list-style-type: none
+
+// Box sizing
+.border-box
+  +box-sizing(border-box)
+
+// Clearing
+.clear
+  clear: both
+
+.clearfix
+  *display: inline-block
+
+  &:after
+    @extend .display-block
+    content: "."
+    height: 0
+    clear: both
+    visibility: hidden
+
+// Misc
+.ellipsis 
+  white-space: nowrap
+  overflow: hidden 
+  text-overflow: ellipsis
+
+.centered
+  margin: 0 auto

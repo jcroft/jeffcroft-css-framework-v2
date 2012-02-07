@@ -1,0 +1,192 @@
+// Settings
+
+$baseline-rhythm: 5px !default
+$base-font-size: 14px !default
+$base-line-height: $baseline-rhythm * 4 !default
+
+$base-font-family: Georgia, serif !default
+$alternate-font-family: 'Helvetica Neue', Arial, sans-serif !default
+$mono-font-family: Consolas, 'Andale Mono', 'Lucida Console', monospace !default
+
+$link-color: #ff6600 !default
+$link-hover-color: #ff3300 !default
+
+$base-text-color: #333 !default
+$strong-text-color: #000 !default
+$weak-text-color: #999 !default
+
+$extra-light-screen: #f9f9f9 !default
+$light-rule: #dfdfdf !default
+
+
+
+
+.base-font-family
+  font-family: $base-font-family
+
+.alternate-font-family
+  font-family: $alternate-font-family
+
+.strong-text
+  color: $strong-text-color
+
+.weak-text
+  color: $weak-text-color
+
+.tiny-font
+  font-size: $base-font-size * .71 // 10px
+  line-height: $base-line-height * .5 // 10px
+
+.extra-small-font
+  font-size: $base-font-size * .786 // 11px
+  line-height: $base-line-height * .75 // 15px
+
+.small-font
+  font-size: $base-font-size * .86 // 12px
+  line-height: $base-line-height * .75 // 15px
+
+.normal-font
+  font-size: $base-font-size // 14px
+  line-height: $base-line-height // 20px
+
+.medium-font
+  font-size: $base-font-size * 1.14 // 16px
+  line-height: $base-line-height // 20px
+
+.medium-large-font
+  font-size: $base-font-size * 1.29 // 18px
+  line-height: $base-line-height * 1.25 // 25px
+
+.large-font
+  font-size: $base-font-size * 1.85 // 26px
+  line-height: $base-line-height * 1.5 // 30px
+
+.extra-large-font
+  font-size: $base-font-size * 2.57 // 36px
+  line-height: $base-line-height * 2 // 40px
+
+.text-block
+  margin-bottom: $base-line-height
+
+.bold
+  font-weight: bold
+
+.italic
+  font-style: italic
+
+.underline
+  text-decoration: underline
+
+.uppercase
+  text-transform: uppercase
+
+
+
+
+body
+  @extend .base-font-family
+  font-size: $base-font-size
+  line-height: $base-line-height
+
+h1, h2, h3, h4, h5, h6
+  @extend .bold
+  @extend .alternate-font-family
+
+h1
+  @extend .extra-large-font
+
+h2
+  @extend .large-font
+
+h3
+  @extend .medium-large-font
+
+h4
+  @extend .medium-font
+
+h5
+  @extend .normal-font
+
+h6
+  @extend .small-font
+  @extend .uppercase
+
+a
+  @extend .bold
+  color: $link-color
+  text-decoration: none
+
+  &:focus,
+  &:hover
+    color: $link-hover-color
+
+p
+  @extend .text-block
+
+blockquote
+  @extend .text-block
+  @extend .italic
+  @extend .medium-large-font
+  margin-top: $base-line-height
+
+  cite
+    @extend .alternate-font-family
+    @extend .normal-font
+    @extend .weak-text
+    font-style: normal
+
+    &:before
+      content: ' — '
+
+strong
+  @extend .bold
+
+em
+  @extend .italic 
+
+dfn
+  @extend .italic
+  @extend .bold
+
+sup, 
+sub
+  line-height: 0
+
+abbr,
+acronym
+  border-bottom: 1px dotted $weak-text-color
+
+address
+  @extend .italic
+
+pre,
+code,
+  @extend .mono-font-family
+  @extend .text-block
+  white-space: pre
+  margin-top: $base-line-height
+
+tt 
+  @extend .mono-font-family
+    
+
+ul, 
+ol, 
+dl
+  @extend .text-block
+  margin-left: $base-line-height
+
+  dt
+    @extend .bold
+  
+  dd
+    margin-left: $base-line-height
+
+// Typogrify classes
+
+.dquo
+  margin-left: -0.5em
+
+.caps
+  font-variant: small-caps
+  text-transform: lowercase

@@ -1,0 +1,38 @@
+$default-message-background-color: #f4f4f4
+$success-message-background-color: #DFF0D8
+$error-message-background-color: #F2DEDE
+$warning-message-background-color: #FCF8E3
+$info-message-background-color: #D9EDF7
+
+=message-colors($color)
+  background-color: $color
+  border: 1px solid darken($color, 10%)
+  color: darken($color, 50%)
+
+#messages 
+
+  ul
+    @extend .no-margin
+    @extend .no-bullets
+
+    li
+      @extend .text-block
+      @extend .alternate-font-family
+      padding: $baseline-rhythm * 2 
+      +border-radius(3px)
+      +message-colors($default-message-background-color)
+
+      &.success
+        +message-colors($success-message-background-color)
+      
+      &.error 
+        +message-colors($error-message-background-color)
+      
+      &.warning
+        +message-colors($warning-message-background-color)
+
+      &.info
+        +message-colors($info-message-background-color)
+
+      
+

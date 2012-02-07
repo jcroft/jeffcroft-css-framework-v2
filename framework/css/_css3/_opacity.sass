@@ -1,0 +1,12 @@
+=opacity($opacity)
+  opacity: $opacity
+  -moz-opacity: $opacity
+  -khtml-opacity: $opacity
+  -ms-filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=") + round($opacity * 100) + unquote(")")
+  filter: unquote("alpha(opacity=") + round($opacity * 100) + unquote(")")
+
+=transparent
+  +opacity(0)
+
+=opaque
+  +opacity(1)

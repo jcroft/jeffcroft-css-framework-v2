@@ -1,0 +1,45 @@
+$base-border-radius: 5px !default
+
+=border-radius($radius: $base-border-radius)
+  border-radius: $radius
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+  background-clip: padding-box
+  -webkit-background-clip: padding-box
+  -moz-background-clip: padding-box
+
+=border-corner-radius($vert, $horz, $radius: $base-border-radius)
+  border-#{$vert}-#{$horz}-radius: $radius
+  -moz-border-radius-#{$vert}#{$horz}: $radius
+  -webkit-border-#{$vert}-#{$horz}-radius: $radius
+  background-clip: padding-box
+  -webkit-background-clip: padding-box
+  -moz-background-clip: padding-box
+
+=border-top-left-radius($radius: $base-border-radius)
+  +border-corner-radius(top, left, $radius)
+
+=border-top-right-radius($radius: $base-border-radius)
+  +border-corner-radius(top, right, $radius)
+
+=border-bottom-left-radius($radius: $base-border-radius)
+  +border-corner-radius(bottom, left, $radius)
+
+=border-bottom-right-radius($radius: $base-border-radius)
+  +border-corner-radius(bottom, right, $radius)
+
+=border-top-radius($radius: $base-border-radius)
+  +border-top-left-radius($radius)
+  +border-top-right-radius($radius)
+
+=border-right-radius($radius: $base-border-radius)
+  +border-top-right-radius($radius)
+  +border-bottom-right-radius($radius)
+
+=border-bottom-radius($radius: $base-border-radius)
+  +border-bottom-left-radius($radius)
+  +border-bottom-right-radius($radius)
+
+=border-left-radius($radius: $base-border-radius)
+  +border-top-left-radius($radius)
+  +border-bottom-left-radius($radius)

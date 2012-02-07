@@ -1,0 +1,49 @@
+=respond-to($device)
+
+  @if $device == handheld
+    @media only screen and (min-width : 320px)
+      @content
+
+  @if $device == handheld-landscape
+    @media only screen and (min-width : 321px)
+      @content
+
+  @if $device == handheld-portrait
+    @media only screen and (max-width : 320px)
+      @content
+  
+  @if $device == tablet
+    @media only screen and (min-width : 600px)
+      @content
+
+  @if $device == tablet-landscape
+    @media only screen and (min-width : 600px) and (orientation : landscape)
+      @content
+
+  @if $device == tablet-portrait
+    @media only screen and (min-width : 600px) and (orientation : portrait)
+      @content
+
+  @if $device == tablet-large
+    @media only screen and (min-width : 768px)
+      @content
+
+  @if $device == tablet-large-landscape
+    @media only screen and (min-width : 768px) and (orientation : landscape)
+      @content
+
+  @if $device == tablet-large-portrait
+    @media only screen and (min-width : 768px) and (orientation : portrait)
+      @content
+
+  @if $device == desktop
+    @media only screen and (min-width : 1224px)
+      @content
+
+  @if $device == desktop-large
+    @media only screen and (min-width : 1824px)
+      @content
+  
+  @if $device == retina-display
+    @media only screen and (-webkit-min-device-pixel-ratio: 2)
+      @content

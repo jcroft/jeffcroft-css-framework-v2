@@ -1,0 +1,79 @@
+// REQUIRED CONSTANTS
+$grid-columns: 10 !default
+$grid-column-width: 118 !default
+$grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
+
+
+// You shouldn't need to touch anything below here
+@function column-width($span, $column-width:$grid-column-width)
+  @return $span * $column-width
+
+@function percent-width($target, $context)
+  @return ($target / $context) * 100%
+
+$grid-width: ($grid-columns * $grid-column-width)
+$grid-gutter-width-pixels: $grid-gutter-width * 1px
+
+=container($span:$grid-columns)
+  @extend .clearfix // Your typical clearfix mixin
+  @extend .centered // Just applies margin: 0 auto
+  max-width: ($grid-column-width * $span) * 1px
+  +box-sizing(content-box)
+  padding: 0 1em
+
+=span($span, $context:$grid-columns)
+  @extend .border-box
+  width: percent-width(column-width($span, $grid-column-width), column-width($context, $grid-column-width))
+ 
+=column($span, $context:$grid-columns)
+  +span($span, $context)
+  float: left
+  padding-right: $grid-gutter-width / 2
+  padding-left: $grid-gutter-width / 2
+
+=box($span, $context:$grid-columns, $screen-color:transparent, $padding-multiplier:.5)
+  +column($span, $context)
+  border: $grid-gutter-width * $padding-multiplier
+  border-style: solid
+  border-color: $screen-color
+  background-color: $screen-color
+
+=prepend($span, $context:$grid-columns)
+  padding-left: percent-width(column-width($span, $grid-column-width), column-width($context, $grid-column-width))
+
+=append($span, $context:$grid-columns)
+  padding-right: percent-width(column-width($span, $grid-column-width), column-width($context, $grid-column-width))
+
+=first
+  padding-left: 0 !important
+
+=last
+  padding-right: 0 !important
+
+
+// Generate the CSS classes.
+@for $n from 1 to $grid-columns + 1
+  .span-#{$n}
+    +span($n)
+
+@for $n from 1 to $grid-columns + 1
+  .column-#{$n}
+    +column($n)
+
+@for $n from 1 to $grid-columns + 1
+  .box-#{$n}
+    +box($n)
+
+@for $n from 1 to $grid-columns
+  .append-#{$n}
+    +append($n)
+
+@for $n from 1 to $grid-columns
+  .prepend-#{$n}
+    +prepend($n)
+
+.container
+  +container
+
+.last
+  +last

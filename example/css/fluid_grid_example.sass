@@ -1,0 +1,33 @@
+// Import the core framework
+@import ../../framework/css/_core.sass
+
+// Import contrib (optional) pieces
+@import ../../framework/css/contrib/_grid_fluid.sass
+
+
+body
+  background-color: #f6f6f6
+
+.container 
+  background-color: #dfdfdf
+  padding-top: 20px
+  padding-bottom: 20px
+
+  div
+    margin-bottom: 20px
+
+    section
+      @extend .ellipsis
+      background-color: #fff
+      height: 40px
+      line-height: 40px
+      text-align: center
+    
+    &.parent
+    
+      div
+        margin-bottom: 0
+      
+        section
+          background-color: #ccc
+

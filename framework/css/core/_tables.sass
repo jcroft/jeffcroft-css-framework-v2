@@ -1,0 +1,29 @@
+.table-cell
+  padding: $baseline-rhythm
+  padding-bottom: $baseline-rhythm - 1px
+  border-bottom: 1px solid $light-rule
+  text-align: left
+
+table
+  @extend .text-block
+  width: 100%
+
+  td, th
+    @extend .table-cell
+
+    &.numeric
+      text-align: right
+    
+    &.center
+      text-align: center
+  
+  th
+    @extend .alternate-font-family
+    @extend .small-font
+    @extend .uppercase
+    
+  &.striped
+
+    tbody tr:nth-child(odd)
+      background-color: $extra-light-screen
+

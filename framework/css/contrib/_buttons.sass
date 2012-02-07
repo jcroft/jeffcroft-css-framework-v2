@@ -1,0 +1,134 @@
+// Settings
+$default-button-color: #e6e6e6 !default
+$default-button-text-color: #828282 !default
+
+$disabled-button-color: #e6e6e6 !default
+$disabled-button-text-color: $weak-text-color !default
+
+$positive-button-color: #529214 !default
+$positive-button-text-color: #fff !default
+
+$negative-button-color: #cc0000 !default
+$negative-button-text-color: #fff !default
+
+
+
+=button-background($start-color, $end-color)
+  background-image: -moz-linear-gradient(top, $start-color, $end-color)
+  background-image: -o-linear-gradient(top, $start-color, $end-color)
+  background-image: -ms-linear-gradient(top, $start-color, $end-color)
+  background-image: linear-gradient(top, $start-color, $end-color)
+  background-image: -webkit-linear-gradient(top, $start-color, $end-color)
+
+=button($background-color, $text-color:$strong-text-color)
+  @extend .display-inline-block
+  background-color: $background-color
+  +button-background(lighten($background-color, 30%), darken($background-color, 10%))
+  border: 1px solid darken($background-color, 10%)
+  border-bottom: 1px solid darken($background-color, 20%)
+  color: $text-color
+  @if darken($background-color, 50%) == #000000
+    +text-shadow(rgba(0, 0, 0, 0.2), 1px, -1px, 0)
+  @else
+    +text-shadow(rgba(255, 255, 255, 0.75), 1px, 1px, 0)
+
+  
+
+  // Use this for lighter backgrounds. Trying to figure out how to automate this.
+  // +text-shadow(rgba(255, 255, 255, 0.75), 1px, 1px, 0)
+
+  // Use this for darker background. Trying to figure out how to automate this.
+  // +text-shadow(rgba(0, 0, 0, 0.2), 1px, -1px, 0)
+
+.base-button
+  +inline-block
+  height: $base-line-height - 2px
+  line-height: $base-line-height - 2px
+  padding-left: $baseline-rhythm * 3
+  padding-right: $baseline-rhythm * 3
+  padding-top: $baseline-rhythm
+  padding-bottom: $baseline-rhythm
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
+  -moz-box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
+  -box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
+  +border-radius(3px)
+  @extend .alternate-font-family
+  @extend .uppercase
+  @extend .extra-small-font
+  +transition(all)
+  +box-sizing(content-box)
+
+  &:hover
+    cursor: pointer
+
+
+.button, 
+button
+  @extend .base-button
+  +button($default-button-color, $default-button-text-color)
+  margin-bottom: 20px
+  margin-right: 10px
+
+  &:hover
+    +button(darken($default-button-color, 5%), $default-button-text-color)
+
+  &.positive
+    +button($positive-button-color, $positive-button-text-color)
+
+    &:hover
+      +button(darken($positive-button-color, 5%), $positive-button-text-color)
+
+  &.negative
+    +button($negative-button-color, $negative-button-text-color)
+
+    &:hover
+      +button(darken($negative-button-color, 5%), $negative-button-text-color)
+  
+  &.subtle
+    background-color: transparent
+    background-image: none
+    border: 1px solid $default-button-color
+    border-bottom: 1px solid darken($default-button-color, 10%)
+    color: $weak-text-color
+
+    &:hover
+      color: $default-button-text-color
+
+  &.passive
+    background-color: transparent
+    background-image: none
+    border: 1px solid transparent
+    text-transform: none
+    color: $weak-text-color
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    -box-shadow: none
+
+
+    &:hover
+      color: $default-button-text-color
+      border: 1px solid $default-button-color
+      border-bottom: 1px solid darken($default-button-color, 10%)
+
+  &.disabled
+    +button($disabled-button-color, $disabled-button-text-color)
+    cursor: not-allowed !important
+    background-image: none
+    border: 1px solid $disabled-button-color
+    -webkit-box-shadow: none
+    -moz-box-shadow: none
+    -box-shadow: none
+
+  &.small
+    @extend .tiny-font
+    height: ($base-line-height * .5) - 2px
+    line-height: ($base-line-height * .5) - 2px
+    padding-left: $baseline-rhythm * 2
+    padding-right: $baseline-rhythm * 2
+  
+  &.large
+    @extend .normal-font
+    height: ($base-line-height * 1.5) - 2px
+    line-height: ($base-line-height * 1.5) - 2px
+    padding-left: $baseline-rhythm * 4
+    padding-right: $baseline-rhythm * 4

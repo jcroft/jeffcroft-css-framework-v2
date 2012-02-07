@@ -1,0 +1,116 @@
+// REQUIRED CONSTANTS. Defaults to a 950px wide, 24-column grid that has 30px wide units and 10px wide
+// gutters.
+$grid-columns: 24 !default
+$grid-column-width: 30 !default
+$grid-gutter-width: 10 !default
+
+// GENERATED CONSTANTS. You can ignore these.
+$grid-full-width: $grid-columns * $grid-column-width + $grid-columns * $grid-gutter-width - $grid-gutter-width
+
+// CONTAINER MIXIN. A container is an element that holds grid based elements. All grid layouts should
+// be wrapped with a container. The width of containers is the total of your columns and gutters.
+// You can stack containers vertically down the page all you like. For example, you may have a container 
+// for your header, one for content, and one for your footer. To specify a container, either use this mixin 
+// in your SASS (+container) or apply the CSS class "container" via HTML (class=container).
+=container($type: none, $box_padding_multiplier: 1)
+  @extend .clearfix // Your typical clearfix mixin
+  @extend .centered // Just applies margin: 0 auto
+  +box-sizing(content-box) // Allow padding to make margins without affecting inner width
+  width: #{($grid-column-width + $grid-gutter-width) * $grid-columns - $grid-gutter-width}px
+  @if $type == "box"
+    padding-left: #{$grid-gutter-width * $box_padding_multiplier}px
+    padding-right: #{$grid-gutter-width * $box_padding_multiplier}px
+
+=span($n, $x: $grid-columns)
+  width: #{$grid-column-width * $n + $grid-gutter-width * ($n - 1)}px
+  @if $n == $grid-columns
+    margin: 0
+
+// COLUMN MIXIN. Column CSS classes are also generated. You can make an element span a specific
+// number of columns either by using this mixin in your SASS for that element (such as +column(4)),
+// or by specifying the CSS class in your HTML (such as class=column-4).
+=column($n)
+  +span($n)
+  float: left
+  margin-right: #{$grid-gutter-width}px
+  @if $n == $grid-columns
+    margin: 0
+
+// BOX MIXIN. A "box" is a column that has inner padding the width of the gutters. It's useful when
+// you intend to have a background color or other screen on the element, such that content butting up
+// against the interior edges of the element would be undesirable. Use it just like the column mixin
+// (+box(4) or class=box-4).
+
+=box($n)
+  float: left
+  width: #{$grid-column-width * $n + $grid-gutter-width * ($n - 1) - $grid-gutter-width * 2}px
+  padding: #{$grid-gutter-width}px
+  margin-right: #{$grid-gutter-width}px
+  @if $n == $grid-columns
+    margin: 0
+
+// APPEND AND PREPEND MIXINS
+// These mixins append or prepend the specificed number of blank columns to an element, using padding.
+// Note that because they use padding, they are not compatible with boxes. I need to make a margin-based
+// version for boxes, but haven't gotten there, yet. Use them as with the other mixins (+append(2) or
+// class=prepend-2).
+=append($n)
+  padding-right: #{$grid-column-width * $n + $grid-gutter-width * $n}px !important
+
+=prepend($n)
+  padding-left: #{$grid-column-width * $n + $grid-gutter-width * $n}px !important
+
+// PUSH AND PULL MIXINS
+// These mixins push or pull an element out of the flow by the specified number of columns. Use as with
+// the other mixins (+push(4) or class=pull-4).
+=pull($n)
+  float: left
+  margin-bottom: $base_line_height
+  margin-left: -#{$grid-column-width * $n + $grid-gutter-width * $n}px !important
+
+=push($n)
+  float: right
+  margin-bottom: $base_line_height
+  margin-right: -#{$grid-column-width * $n + $grid-gutter-width * $n}px !important
+
+// OTHER MIXINS
+=last
+  margin-right: 0 !important
+
+// Generate the CSS classes.
+@for $n from 1 to $grid-columns + 1
+  .span-#{$n}
+    +span($n)
+
+@for $n from 1 to $grid-columns + 1
+  .column-#{$n}
+    +column($n)
+
+@for $n from 1 to $grid-columns + 1
+  .box-#{$n}
+    +box($n)
+
+@for $n from 1 to $grid-columns
+  .append-#{$n}
+    +append($n)
+
+@for $n from 1 to $grid-columns
+  .prepend-#{$n}
+    +prepend($n)
+
+@for $n from 1 to $grid-columns / 2 + 1
+  .pull-#{$n}
+    +pull($n)
+
+@for $n from 1 to $grid-columns / 2 + 1
+  .push-#{$n}
+    +push($n)
+
+.container
+  +container
+
+.container-box
+  +container(box)
+
+.last
+  +last

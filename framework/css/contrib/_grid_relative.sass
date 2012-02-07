@@ -1,0 +1,423 @@
+// Settings
+$grid-max-width: 1180px !default
+$grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
+$grid-single-column-breakpoint: 600px
+
+.column
+  @extend .float-left
+  padding-right: $grid-gutter-width / 2
+  padding-left: $grid-gutter-width / 2
+
+  // IE7 tweaks (Thanks to @nathansmith)
+  // [1] Remove padding, since IE7 doesn't
+  //     support "box-sizing: border-box".
+  *padding-left: 0
+  *padding-right: 0
+  //
+  // [2] Adjust for possible rounding errors,
+  //     pulling the adjacent sibling closer.
+  *margin-right: -1px
+  //
+  // [3] Fake what would normally be padding,
+  //     for browsers that support box-sizing.
+  *:first-child + html & > *
+    margin-left: expression(!this.className.match(/width-/) && '10px')
+    margin-right: expression(!this.className.match(/width-/) && '10px')
+
+=container()
+  @extend .clearfix // Your typical clearfix mixin
+  @extend .centered // Just applies margin: 0 auto
+  +box-sizing(content-box) // Allow padding to make margins without affecting inner width
+  max-width: $grid-max-width
+  padding: 0 $grid-gutter-width
+
+=span($percent)
+  width: $percent
+
+=column($percent)
+  @extend .column
+  +respond-to(handheld)
+    width: 100%
+  +respond-to(tablet-large)
+    +span($percent)
+
+=append($percent)
+  +respond-to(handheld)
+    margin-right: 0
+  +respond-to(tablet-large)
+    margin-right: $percent
+    
+=prepend($percent)
+  +respond-to(handheld)
+    margin-left: 0
+  +respond-to(tablet-large)
+    margin-left: $percent
+
+=push($percent)
+  +respond-to(handheld)
+    position: static
+    left: 0
+  +respond-to(tablet-large)
+    position: relative
+    left: $percent
+
+=pull($percent)
+  +respond-to(handheld)
+    position: static
+    right: 0
+  +respond-to(tablet-large)
+    position: relative
+    right: $percent
+
+
+.container
+  +container
+
+.parent
+  padding-left: 0 !important
+  padding-right: 0 !important
+
+
+// CSS classes (optional, but useful for now)
+
+.column-100
+  +column(100%)
+
+.column-95
+  +column(95%)
+
+.column-90
+  +column(90%)
+
+.column-85
+  +column(85%)
+
+.column-80
+  +column(80%)
+
+.column-75
+  +column(75%)
+
+.column-70
+  +column(70%)
+
+.column-66
+  +column(66.66666%)
+
+.column-65
+  +column(65%)
+
+.column-60
+  +column(60%)
+
+.column-55
+  +column(55%)
+  
+.column-50
+  +column(50%)
+
+.column-45
+  +column(95%)
+  
+.column-40
+  +column(40%)  
+
+.column-35
+  +column(35%)
+
+.column-33
+  +column(33.33333%)
+
+.column-30
+  +column(30%) 
+
+.column-25
+  +column(25%)
+
+.column-20
+  +column(20%)
+
+.column-15
+  +column(15%)
+
+.column-10
+  +column(10%) 
+
+.column-5
+  +column(5%)
+
+
+// Prepend classes
+
+.prepend-100
+  +prepend(100%)
+
+.prepend-95
+  +prepend(95%)
+
+.prepend-90
+  +prepend(90%)
+
+.prepend-85
+  +prepend(85%)
+
+.prepend-80
+  +prepend(80%)
+
+.prepend-75
+  +prepend(75%)
+
+.prepend-70
+  +prepend(70%)
+
+.prepend-66
+  +prepend(66.66666%)
+
+.prepend-65
+  +prepend(65%)
+
+.prepend-60
+  +prepend(60%)
+
+.prepend-55
+  +prepend(55%)
+  
+.prepend-50
+  +prepend(50%)
+
+.prepend-45
+  +prepend(95%)
+  
+.prepend-40
+  +prepend(40%)  
+
+.prepend-35
+  +prepend(35%)
+
+.prepend-33
+  +prepend(33.33333%)
+
+.prepend-30
+  +prepend(30%) 
+
+.prepend-25
+  +prepend(25%)
+
+.prepend-20
+  +prepend(20%)
+
+.prepend-15
+  +prepend(15%)
+
+.prepend-10
+  +prepend(10%) 
+
+.prepend-5
+  +prepend(5%)
+
+
+// Append classes
+
+.append-100
+  +append(100%)
+
+.append-95
+  +append(95%)
+
+.append-90
+  +append(90%)
+
+.append-85
+  +append(85%)
+
+.append-80
+  +append(80%)
+
+.append-75
+  +append(75%)
+
+.append-70
+  +append(70%)
+
+.append-66
+  +append(66.66666%)
+
+.append-65
+  +append(65%)
+
+.append-60
+  +append(60%)
+
+.append-55
+  +append(55%)
+  
+.append-50
+  +append(50%)
+
+.append-45
+  +append(95%)
+  
+.append-40
+  +append(40%)  
+
+.append-35
+  +append(35%)
+
+.append-33
+  +append(33.33333%)
+
+.append-30
+  +append(30%) 
+
+.append-25
+  +append(25%)
+
+.append-20
+  +append(20%)
+
+.append-15
+  +append(15%)
+
+.append-10
+  +append(10%) 
+
+.append-5
+  +append(5%)
+
+// Push classes
+
+.push-100
+  +push(100%)
+
+.push-95
+  +push(95%)
+
+.push-90
+  +push(90%)
+
+.push-85
+  +push(85%)
+
+.push-80
+  +push(80%)
+
+.push-75
+  +push(75%)
+
+.push-70
+  +push(70%)
+
+.push-66
+  +push(66.66666%)
+
+.push-65
+  +push(65%)
+
+.push-60
+  +push(60%)
+
+.push-55
+  +push(55%)
+  
+.push-50
+  +push(50%)
+
+.push-45
+  +push(95%)
+  
+.push-40
+  +push(40%)  
+
+.push-35
+  +push(35%)
+
+.push-33
+  +push(33.33333%)
+
+.push-30
+  +push(30%) 
+
+.push-25
+  +push(25%)
+
+.push-20
+  +push(20%)
+
+.push-15
+  +push(15%)
+
+.push-10
+  +push(10%) 
+
+.push-5
+  +push(5%)
+
+
+
+// Pull classes
+
+.pull-100
+  +pull(100%)
+
+.pull-95
+  +pull(95%)
+
+.pull-90
+  +pull(90%)
+
+.pull-85
+  +pull(85%)
+
+.pull-80
+  +pull(80%)
+
+.pull-75
+  +pull(75%)
+
+.pull-70
+  +pull(70%)
+
+.pull-66
+  +pull(66.66666%)
+
+.pull-65
+  +pull(65%)
+
+.pull-60
+  +pull(60%)
+
+.pull-55
+  +pull(55%)
+  
+.pull-50
+  +pull(50%)
+
+.pull-45
+  +pull(95%)
+  
+.pull-40
+  +pull(40%)  
+
+.pull-35
+  +pull(35%)
+
+.pull-33
+  +pull(33.33333%)
+
+.pull-30
+  +pull(30%) 
+
+.pull-25
+  +pull(25%)
+
+.pull-20
+  +pull(20%)
+
+.pull-15
+  +pull(15%)
+
+.pull-10
+  +pull(10%) 
+
+.pull-5
+  +pull(5%)

@@ -1,0 +1,15 @@
+$default-box-shadow-color: #333333 !default
+$default-box-shadow-h-offset: 1px !default
+$default-box-shadow-v-offset: 1px !default
+$default-box-shadow-blur: 5px !default
+$default-box-shadow-spread-radius: 0 !default
+
+=box-shadow($color: $default-box-shadow-color, $hoff: $default-box-shadow-h-offset, $voff: $default-box-shadow-v-offset, $blur: $default-box-shadow-blur, $spread: $default-box-shadow-spread-radius)
+  -webkit-box-shadow: $color $hoff $voff $blur $spread
+  -moz-box-shadow: $color $hoff $voff $blur $spread
+  box-shadow: $color $hoff $voff $blur $spread
+
+=inset-box-shadow($color: $default-box-shadow-color, $hoff: $default-box-shadow-h-offset, $voff: $default-box-shadow-v-offset, $blur: $default-box-shadow-blur, $spread: $default-box-shadow-spread-radius)
+  -webkit-box-shadow: inset $color $hoff $voff $blur $spread
+  -moz-box-shadow: inset $color $hoff $voff $blur $spread
+  box-shadow: inset $color $hoff $voff $blur $spread

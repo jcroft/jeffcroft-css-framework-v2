@@ -1,0 +1,129 @@
+// Settings
+
+$error-color: #cc0000
+
+
+
+.input
+  @extend .no-margin
+  @extend .display-inline-block
+  @extend .border-box
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  -box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+  border-top: 1px solid #bbbbbb
+  border-right: 1px solid #dddddd
+  border-bottom: 1px solid #dddddd
+  border-left: 1px solid #bbbbbb
+  padding: $baseline-rhythm
+  line-height: $base-line-height
+  font-size: $base-font-size
+  +transition('border-color')
+  word-spacing: normal
+
+  &:focus
+    border-color: $link-color !important
+
+
+form
+  @extend .text-block
+  margin-bottom: $base-line-height * 3
+
+  fieldset
+    padding-bottom: $base-line-height
+    margin-bottom: 0
+  
+  legend
+    @extend .alternate-font-family
+    @extend .extra-small-font
+    @extend .bold
+    @extend .uppercase
+    @extend .no-margin-or-padding
+    @extend .full-width
+    width: 100%
+    border: none
+    border-top: 1px solid $light-rule
+    color: $weak-text-color
+    padding-bottom: $baseline-rhythm * 2
+
+  ol,
+  ul
+    @extend .no-margin
+    @extend .no-bullets
+
+    li
+      @extend .no-margin-or-padding
+      margin-bottom: $base-line-height
+      overflow: hidden
+      word-spacing: -1em
+
+  label
+    @extend .alternate-font-family
+    @extend .bold
+    @extend .small-font
+    @extend .display-block
+    @extend .border-box
+    cursor: pointer
+    margin-bottom: $baseline-rhythm
+    word-spacing: normal
+
+    &.errors
+      color: $error-color
+    
+    abbr
+      @extend .medium-font
+      font-style: normal
+      font-weight: normal
+      border-bottom: none
+
+  input[type="text"], 
+  input[type="password"], 
+  input[type="file"], 
+  textarea, 
+  select
+    @extend .input
+
+    &[disabled]
+      cursor: not-allowed
+
+  input[type="text"], 
+  input[type="password"],
+  input[type="file"],  
+  select
+    width: 33%
+  
+  input[type="checkbox"]
+    @extend .no-margin-or-padding
+    height: $base-line-height
+    line-height: $base-line-height
+    vertical-align: top
+  
+  textarea
+    @extend .display-block
+    width: 66%
+    height: $base-line-height * 6
+  
+  .help_text
+    @extend .italic
+    @extend .small-font
+    @extend .display-inline-block
+    @extend .border-box
+    @extend .no-margin-or-padding
+    margin-top: $baseline-rhythm
+    color: $weak-text-color
+    width: 66%
+    word-spacing: normal
+    padding-left: $baseline-rhythm
+    padding-right: $baseline-rhythm
+    margin-bottom: $baseline-rhythm
+
+  ul.errorlist
+    @extend .no-margin
+    color: $error-color
+
+    li
+      @extend .no-margin
+    
+
+
+
