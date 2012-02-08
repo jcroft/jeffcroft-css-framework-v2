@@ -1,13 +1,18 @@
-$default-message-background-color: #f4f4f4
-$success-message-background-color: #DFF0D8
-$error-message-background-color: #F2DEDE
-$warning-message-background-color: #FCF8E3
-$info-message-background-color: #D9EDF7
+$default-message-background-color: #696969
+$success-message-background-color: #40a140
+$error-message-background-color: #da2222
+$warning-message-background-color: #e7c202
+$info-message-background-color: #3386af
 
 =message-colors($color)
-  background-color: $color
-  border: 1px solid darken($color, 10%)
-  color: darken($color, 50%)
+  background-color: lighten($color, 10%)
+  border: 1px solid $color
+  color: #fff
+  font-weight: bold
+  @if darken($color, 50%) == #000000
+    +text-shadow(rgba(0, 0, 0, 0.2), 1px, -1px, 0)
+  @else
+    +text-shadow(rgba(255, 255, 255, 0.75), 1px, 1px, 0)
 
 #messages 
 
@@ -21,6 +26,9 @@ $info-message-background-color: #D9EDF7
       padding: $baseline-rhythm * 2 
       +border-radius(3px)
       +message-colors($default-message-background-color)
+      -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
+      -moz-box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
+      -box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
 
       &.success
         +message-colors($success-message-background-color)

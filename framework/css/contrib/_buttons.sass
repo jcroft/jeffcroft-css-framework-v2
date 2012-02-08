@@ -5,10 +5,10 @@ $default-button-text-color: #828282 !default
 $disabled-button-color: #e6e6e6 !default
 $disabled-button-text-color: $weak-text-color !default
 
-$positive-button-color: #529214 !default
+$positive-button-color: #40a140 !default
 $positive-button-text-color: #fff !default
 
-$negative-button-color: #cc0000 !default
+$negative-button-color: #da2222 !default
 $negative-button-text-color: #fff !default
 
 
@@ -31,7 +31,25 @@ $negative-button-text-color: #fff !default
     +text-shadow(rgba(0, 0, 0, 0.2), 1px, -1px, 0)
   @else
     +text-shadow(rgba(255, 255, 255, 0.75), 1px, 1px, 0)
+  
+.small-button
+  @extend .tiny-font
+  height: ($base-line-height * .5) - 2px
+  line-height: ($base-line-height * .5) - 2px
+  padding-left: $baseline-rhythm * 2
+  padding-right: $baseline-rhythm * 2
 
+.large-button
+  @extend .normal-font
+  height: ($base-line-height * 1.5) - 2px
+  line-height: ($base-line-height * 1.5) - 2px
+  padding-left: $baseline-rhythm * 4
+  padding-right: $baseline-rhythm * 4
+
+.active-button
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
+  -box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
   
 
   // Use this for lighter backgrounds. Trying to figure out how to automate this.
@@ -71,6 +89,11 @@ button
 
   &:hover
     +button(darken($default-button-color, 5%), $default-button-text-color)
+  
+  &:active,
+  &.active
+    background-image: none
+    background-color: darken($default-button-color, 10%)
 
   &.positive
     +button($positive-button-color, $positive-button-text-color)
@@ -78,11 +101,21 @@ button
     &:hover
       +button(darken($positive-button-color, 5%), $positive-button-text-color)
 
+    &:active,
+    &.active
+      background-image: none
+      background-color: darken($positive-button-color, 10%)
+
   &.negative
     +button($negative-button-color, $negative-button-text-color)
 
     &:hover
       +button(darken($negative-button-color, 5%), $negative-button-text-color)
+
+    &:active,
+    &.active
+      background-image: none
+      background-color: darken($negative-button-color, 10%)
   
   &.subtle
     background-color: transparent
@@ -93,6 +126,10 @@ button
 
     &:hover
       color: $default-button-text-color
+
+    &:active,
+    &.active
+      background-color: $default-button-color
 
   &.passive
     background-color: transparent
@@ -110,6 +147,10 @@ button
       border: 1px solid $default-button-color
       border-bottom: 1px solid darken($default-button-color, 10%)
 
+    &:active,
+    &.active
+      background-color: $default-button-color
+
   &.disabled
     +button($disabled-button-color, $disabled-button-text-color)
     cursor: not-allowed !important
@@ -120,15 +161,30 @@ button
     -box-shadow: none
 
   &.small
-    @extend .tiny-font
-    height: ($base-line-height * .5) - 2px
-    line-height: ($base-line-height * .5) - 2px
-    padding-left: $baseline-rhythm * 2
-    padding-right: $baseline-rhythm * 2
+    @extend .small-button
   
   &.large
-    @extend .normal-font
-    height: ($base-line-height * 1.5) - 2px
-    line-height: ($base-line-height * 1.5) - 2px
-    padding-left: $baseline-rhythm * 4
-    padding-right: $baseline-rhythm * 4
+    @extend .large-button
+  
+.button-group
+  font-size: 0
+  
+  a.button,
+  button
+    @extend .inline-block 
+    @extend .extra-small-font
+    margin-right: 0
+    +border-radius(0)
+    margin-left: -1px
+
+    &:first-child
+      +border-left-radius(3px)
+    
+    &:last-child
+      +border-right-radius(3px)
+
+    &.small
+      @extend .small-button
+  
+    &.large
+      @extend .large-button
