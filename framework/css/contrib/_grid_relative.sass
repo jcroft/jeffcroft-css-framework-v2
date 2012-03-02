@@ -1,7 +1,16 @@
-// Settings
+// RELATIVE GRID
+// Useful for fluid-width, responsive layouts. By default, all columns are 
+// linearized when the visitor is using a handheld-class device.
+
+// Settings - These can be overridden by the developer.
 $grid-max-width: 1224px !default
 $grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
 
+
+
+
+// Column extend class
+// You probably won't use this directly. Instead, use the mixins below.
 .column
   @extend .float-left
   padding-right: $grid-gutter-width / 2
@@ -23,6 +32,8 @@ $grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
     margin-left: expression(!this.className.match(/width-/) && '10px')
     margin-right: expression(!this.className.match(/width-/) && '10px')
 
+// Container mixin
+// Used to "wrap" a set of columns. You can have stack many containers as you like.
 =container()
   @extend .clearfix // Your typical clearfix mixin
   @extend .centered // Just applies margin: 0 auto
@@ -30,9 +41,19 @@ $grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
   max-width: $grid-max-width
   padding: 0 $grid-gutter-width
 
+// Parent mixin
+// If a column will be used to contain more column, apply this mixin.
+=parent()
+  padding-left: 0 !important
+  padding-right: 0 !important
+
+// Span mixin
+// Pass it a percentage, and it sets the width.
 =span($percent)
   width: $percent
 
+// Column mixin
+// Pass is a percentage, and it creates a column that width.
 =column($percent)
   @extend .column
   +respond-to(handheld)
@@ -40,6 +61,8 @@ $grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
   +respond-to(tablet-large)
     +span($percent)
 
+// Append and prepend mixins (for use on columns)
+// Pass them a percentage, and they insert that amount of blank space after/before a column.
 =append($percent)
   +respond-to(handheld)
     margin-right: 0
@@ -52,6 +75,8 @@ $grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
   +respond-to(tablet-large)
     margin-left: $percent
 
+// Push and pull mixins (for use on columns)
+// Pass them a percentage, and they move the column that percent left or right of their original position.
 =push($percent)
   +respond-to(handheld)
     position: static
@@ -69,15 +94,19 @@ $grid-gutter-width: ($base-line-height / $base-font-size) * 1em !default
     right: $percent
 
 
+
+
+// CSS classes
+// These are all optional, and I will probably remove them (I prefer to apply the
+// mixins above rather than introduce these presentational class names into my
+// markup). But, they've been useful in testing and development, so I'm leaving
+// them until I'm convinced this all works the way I need it to.
+
 .container
   +container
 
 .parent
-  padding-left: 0 !important
-  padding-right: 0 !important
-
-
-// CSS classes (optional, but useful for now)
+  +parent
 
 .column-100
   +column(100%)
