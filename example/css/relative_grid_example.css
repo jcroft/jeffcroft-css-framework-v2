@@ -1,5 +1,11 @@
+.display-none {
+  display: none; }
+
 .display-block, .clearfix:after, .container:after, form label, form textarea {
   display: block; }
+
+.display-inline {
+  display: inline; }
 
 .display-inline-block, .input, form input[type="text"],
 form input[type="password"],
@@ -19,13 +25,24 @@ form select, form .help_text {
 .position-absolute {
   position: absolute; }
 
+.position-fixed {
+  position: fixed; }
+
+.position-static {
+  position: static; }
+
 .float-left, .column, .column-100, .column-95, .column-90, .column-85, .column-80, .column-75, .column-70, .column-66, .column-65, .column-60, .column-55, .column-50, .column-45, .column-40, .column-35, .column-33, .column-30, .column-25, .column-20, .column-15, .column-10, .column-5 {
   float: left; }
 
 .float-right {
-  flaot: right; }
+  float: right; }
 
-.no-margin, .no-margin-or-padding, form legend, form ol li,
+.float-none {
+  float: none; }
+
+.no-margin, .no-margin-or-padding, h1, h2, h3, h4, h5, h6, ul,
+ol,
+dl, form legend, form ol li,
 form ul li, form input[type="checkbox"], form .help_text, .input, form input[type="text"],
 form input[type="password"],
 form input[type="file"],
@@ -34,7 +51,9 @@ form select, form ol,
 form ul, form ul.errorlist, form ul.errorlist li {
   margin: 0; }
 
-.no-padding, .no-margin-or-padding, form legend, form ol li,
+.no-padding, .no-margin-or-padding, h1, h2, h3, h4, h5, h6, ul,
+ol,
+dl, form legend, form ol li,
 form ul li, form input[type="checkbox"], form .help_text {
   padding: 0; }
 
@@ -54,6 +73,12 @@ form select, form label, form .help_text {
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box; }
+
+.content-box, .container {
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  box-sizing: content-box; }
 
 .clear {
   clear: both; }
@@ -231,6 +256,9 @@ table {
 .alternate-font-family, h1, h2, h3, h4, h5, h6, blockquote cite, table th, form legend, form label {
   font-family: "Helvetica Neue", Arial, sans-serif; }
 
+.header, h1, h2, h3, h4, h5, h6 {
+  color: #666666; }
+
 .strong-text {
   color: black; }
 
@@ -262,7 +290,7 @@ table {
   line-height: 25px; }
 
 .large-font, h2 {
-  font-size: 25.9px;
+  font-size: 28px;
   line-height: 30px; }
 
 .extra-large-font, h1 {
@@ -273,6 +301,7 @@ table {
 code, ul,
 ol,
 dl, table, form {
+  margin-top: 0;
   margin-bottom: 20px; }
 
 .bold, h1, h2, h3, h4, h5, h6, a, strong, dfn, ul dt,
@@ -289,6 +318,9 @@ dl dt, form legend, form label {
 .uppercase, h6, table th, form legend {
   text-transform: uppercase; }
 
+html {
+  -webkit-font-smoothing: antialiased; }
+
 body {
   font-size: 14px;
   line-height: 20px; }
@@ -300,6 +332,7 @@ a {
     color: #ff3300; }
 
 blockquote {
+  color: #666666;
   margin-top: 20px; }
   blockquote cite {
     font-style: normal; }
@@ -395,6 +428,7 @@ form {
     border: none;
     border-top: 1px solid #dfdfdf;
     color: #999999;
+    padding-top: 5px;
     padding-bottom: 10px; }
   form ol li,
   form ul li {
@@ -451,10 +485,6 @@ form {
     margin-right: expression(!this.className.match(/width-/) && '10px'); }
 
 .container {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
-  -ms-box-sizing: content-box;
-  box-sizing: content-box;
   max-width: 1180px;
   padding: 0 1.429em; }
 
