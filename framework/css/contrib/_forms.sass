@@ -100,7 +100,9 @@ form
   input[type="password"],
   input[type="file"],  
   select
-    width: 33%
+    width: 100%
+    +respond-to(tablet)
+      width: 33%
   
   input[type="checkbox"]
     @extend .no-margin-or-padding
@@ -110,7 +112,9 @@ form
   
   textarea
     @extend .display-block
-    width: 66%
+    width: 100%
+    +respond-to(tablet)
+      width: 66%
     height: $base-line-height * 6
   
   .help_text
@@ -121,7 +125,9 @@ form
     @extend .no-margin-or-padding
     margin-top: $baseline-rhythm
     color: $weak-text-color
-    width: 66%
+    width: 100%
+    +respond-to(tablet)
+      width: 66%
     word-spacing: normal
     padding-left: $baseline-rhythm
     padding-right: $baseline-rhythm
