@@ -109,6 +109,13 @@ form
     height: $base-line-height
     line-height: $base-line-height
     vertical-align: top
+    width: $base-line-height
+    @extend .float-left
+
+    + .help_text
+      @extend .float-left
+      width: auto
+      margin-top: 0
   
   textarea
     @extend .display-block
