@@ -7,10 +7,16 @@ $error-message-background-color: #da2222 !default
 $warning-message-background-color: #e7c202 !default
 $info-message-background-color: #3386af !default
 
-=message-colors($color)
+$default-message-text-color: #fff !default
+$success-message-text-color: #fff !default
+$error-message-text-color: #fff !default
+$warning-message-text-color: #fff !default
+$info-message-text-color: #fff !default
+
+=message-colors($color, $text-color)
   background-color: lighten($color, 10%)
   border: 1px solid $color
-  color: #fff
+  color: $text-color
   font-weight: bold
   @if darken($color, 50%) == #000000
     +text-shadow(rgba(0, 0, 0, 0.2), 1px, -1px, 0)
@@ -28,22 +34,22 @@ $info-message-background-color: #3386af !default
       @extend .alternate-font-family
       padding: $baseline-rhythm * 2 
       +border-radius(3px)
-      +message-colors($default-message-background-color)
+      +message-colors($default-message-background-color, $default-message-text-color)
       -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
       -moz-box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
       -box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px
 
       &.success
-        +message-colors($success-message-background-color)
+        +message-colors($success-message-background-color, $success-message-text-color)
       
       &.error 
-        +message-colors($error-message-background-color)
+        +message-colors($error-message-background-color, $error-message-text-color)
       
       &.warning
-        +message-colors($warning-message-background-color)
+        +message-colors($warning-message-background-color, $warning-message-text-color)
 
       &.info
-        +message-colors($info-message-background-color)
+        +message-colors($info-message-background-color, $info-message-text-color)
 
       
 
