@@ -31,6 +31,7 @@
   // Webkit's gradient api sucks -- hence these backflips:
   $end: grad_opposite_position($start)
   background-image: -webkit-gradient(linear, #{grad_point($start)}, #{grad_point($end)}, #{grad_color_stops($color_stops)})
+  background-image: -webkit-linear-gradient(#{$start}, #{$color_stops})
   background-image: -moz-linear-gradient(#{$start}, #{$color_stops})
 
 // Due to limitation's of webkit, the radial gradient mixin works best if you use
@@ -54,4 +55,5 @@
 =radial-gradient($color_stops, $center_position: unquote("center center"))
   $end_pos: grad_end_position($color_stops, true)
   background-image: -webkit-gradient(radial, #{grad_point($center_position)}, 0, #{grad_point($center_position)}, #{$end_pos}, #{grad_color_stops($color_stops)})
+  background-image: -webkit-radial-gradient(#{$center_position}, circle, #{$color_stops})
   background-image: -moz-radial-gradient(#{$center_position}, circle, #{$color_stops})
