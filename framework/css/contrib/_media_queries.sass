@@ -7,11 +7,11 @@
       @content
 
   @if $device == handheld-landscape
-    @media only screen and (min-width : 321px)
+    @media only screen and (min-width : 320px) and (orientation : landscape)
       @content
 
   @if $device == handheld-portrait
-    @media only screen and (max-width : 320px)
+    @media only screen and (max-width : 320px) and (orientation : landscape)
       @content
   
   @if $device == tablet
@@ -49,3 +49,17 @@
   @if $device == retina-display
     @media only screen and (-webkit-min-device-pixel-ratio: 2)
       @content
+
+body
+  &:after
+    display: none
+    +respond-to(handheld)
+      content: 'handheld'
+    +respond-to(tablet)
+      content: 'tablet'
+    +respond-to(tablet-large)
+      content: 'tablet-large'
+    +respond-to(desktop)
+      content: 'desktop'
+    +respond-to(desktop-large)
+      content: 'desktop-large'
