@@ -23,7 +23,7 @@ $error-color: #cc0000
   line-height: $base-line-height
   font-size: $base-font-size
   +transition('border-color')
-  word-spacing: normal
+  // word-spacing: normal
 
   &:focus
     border-color: $link-color !important
@@ -60,12 +60,12 @@ form
       @extend .no-margin-or-padding
       margin-bottom: $base-line-height
       overflow: hidden
-      word-spacing: -1em
+      // word-spacing: -1em
 
     &.errorlist
 
       li
-        word-spacing: normal
+        // word-spacing: normal
 
   label
     @extend .alternate-font-family
@@ -75,7 +75,7 @@ form
     @extend .border-box
     cursor: pointer
     margin-bottom: $baseline-rhythm
-    word-spacing: normal
+    // word-spacing: normal
 
     &.errors
       color: $error-color
@@ -135,7 +135,7 @@ form
     width: 100%
     +respond-to(tablet)
       width: 66%
-    word-spacing: normal
+    // word-spacing: normal
     padding-left: $baseline-rhythm
     padding-right: $baseline-rhythm
     margin-bottom: $baseline-rhythm
