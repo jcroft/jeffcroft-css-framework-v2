@@ -14,8 +14,8 @@ $warning-message-text-color: #fff !default
 $info-message-text-color: #fff !default
 
 =message-colors($color, $text-color)
-  background-color: lighten($color, 10%)
-  border: 1px solid $color
+  background-color: $color
+  border: 1px solid darken($color, 10%)
   color: $text-color
   font-weight: bold
   @if darken($color, 50%) == #000000
