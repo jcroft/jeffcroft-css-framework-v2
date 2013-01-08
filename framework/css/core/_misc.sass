@@ -1,90 +1,90 @@
-// These are "extends" classes.They exist to be built in top of by other classes
-// and mixins. They will generally not be used directly.
+// These are silent "extends" classes.They exist to be built in top of by other classes
+// and mixins. They are not to be used directly.
 
 // Display
-.display-none
+%display-none
   display: none
 
-.display-block
+%display-block
   display: block
 
-.display-inline 
+%display-inline 
   display: inline
 
-.display-inline-block
+%display-inline-block
   +inline-block
 
 // Position
-.position-relative
+%position-relative
   position: relative
 
-.position-absolute
+%position-absolute
   position: absolute
 
-.position-fixed
+%position-fixed
   position: fixed
 
-.position-static
+%position-static
   position: static
 
 // Float
-.float-left
+%float-left
   float: left
 
-.float-right
+%float-right
   float: right
 
-.float-none
+%float-none
   float: none
 
 // Margins and padding
-.no-margin
+%no-margin
   margin: 0
 
-.no-padding
+%no-padding
   padding: 0
 
-.no-margin-or-padding
-  @extend .no-margin
-  @extend .no-padding
+%no-margin-or-padding
+  @extend %no-margin
+  @extend %no-padding
 
 // Width
-.full-width
+%full-width
   width: 100%
 
 // Lists
-.no-bullets
+%no-bullets
   list-style-type: none
 
 // Box sizing
-.border-box
+%border-box
   +box-sizing(border-box)
 
-.content-box
+%content-box
   +box-sizing(content-box)
 
 // Clearing
-.clear
+%clear
   clear: both
 
-.clearfix
+%clearfix
   *display: inline-block
 
   &:after
-    @extend .display-block
+    @extend %display-block
     content: "."
     height: 0
     clear: both
     visibility: hidden
 
 // Misc
-.ellipsis 
+%ellipsis 
   white-space: nowrap
   overflow: hidden 
   text-overflow: ellipsis
 
-.centered
+%centered
   margin: 0 auto
 
-.no-wrap
+%no-wrap
   white-space: nowrap
